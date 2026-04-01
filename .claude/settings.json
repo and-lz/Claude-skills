@@ -1,9 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Edit(~/.claude/**)",
-      "Write(~/.claude/**)",
-      "Edit(~/.claude/skills/architect/**)"
+      "Edit(/Users/andreluiz/.claude/**)",
+      "Write(/Users/andreluiz/.claude/**)"
     ],
     "defaultMode": "acceptEdits"
   }
