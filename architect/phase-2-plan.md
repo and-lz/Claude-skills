@@ -109,4 +109,4 @@ When the user rejects the `## Plan`:
 4. Track: `**Plan iteration**: 2/3`
 5. After 3 rejections: same escalation as Phase 1 rejection
 
-When approved: **run `/clear`** to free context, then read `phase-3-execute.md`.
+When approved: read `phase-3-execute.md`.

@@ -1,6 +1,7 @@
 ---
 name: architect
-description: "Use for /architect, structured design and implementation, multi-phase workflow. Triggers on /architect, \"architect this\", \"design and build\", \"build this feature\", phased implementation, structured workflow. 3-phase process (Context → Plan → Execute) that prevents vibe coding by requiring understanding, design-thinking, pattern-matching, and approval before any code is written."
+description: "3-phase design & implementation (Context → Plan → Execute). Use for /architect, 'architect this', 'design and build', 'build this feature', or any non-trivial multi-file change."
+argument-hint: "<task description>"
 ---
 
 # /architect — Structured 3-Phase Design & Implementation
@@ -10,10 +11,7 @@ Think before you build. Every change must be understood, pattern-matched, review
 **Invoked as:** `/architect $ARGUMENTS`
 
 If `$ARGUMENTS` is empty, use `AskUserQuestion` to ask: "What do you want to implement, fix, or change?"
-
-## Prerequisites
-
-**Before starting Phase 1**, tell the user: "Switch to bypass mode so the workflow runs uninterrupted. The skill has its own approval gates between phases." Only say this once at the start.
+If `$ARGUMENTS` is provided, use it as the initial task description and pass it to Phase 1 requirements gathering. Still ask clarifying questions — but don't re-ask what the user wants to do.
 
 ## Triage — Fast-Path
 
@@ -57,10 +55,11 @@ Assess complexity before any setup:
 
 ### Phase transitions
 
-- **Phase 1 → 2**: After user approves `## Context`, **run `/clear`** to free context, then call `EnterPlanMode` and read `phase-2-plan.md`
-- **Phase 2 → 3**: Use `ExitPlanMode` for approval. Once approved, **run `/clear`** to free context, then read `phase-3-execute.md`
+- **Phase 1 → 2**: After user approves `## Context`, call `EnterPlanMode` and read `phase-2-plan.md`
+- **Phase 2 → 3**: Use `ExitPlanMode` for approval. Once approved, read `phase-3-execute.md`
 - **Never skip a phase. Never merge phases. Never code before Phase 2 is approved.**
-- **Always `/clear` between phases** to keep context window lean. The `<slug>.md` file carries all needed state.
+- The `<slug>.md` file carries all needed state between phases. Only read the current phase's reference file — prior phase instructions are no longer needed.
+- **For large tasks (>15 affected files)**: suggest the user run `/clear` between phases to free context. This is optional, not required.
 
 ### Plan mode vs. plan doc — CRITICAL
 

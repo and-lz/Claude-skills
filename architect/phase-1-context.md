@@ -26,14 +26,14 @@ Wait for answers. If answers reveal new ambiguities, ask follow-ups. Do NOT proc
 
 ### Domain skill integration
 
-If the task involves a specific platform, read the relevant domain skill's SKILL.md to identify which reference files apply:
-- iOS/iPadOS/Swift/SwiftUI → Read `ios-26-app/SKILL.md`, note relevant reference files
-- tvOS/Apple TV → Read `tvos-26-app/SKILL.md`, note relevant reference files
-- Cross-platform → Read both, note shared vs platform-specific concerns
+If the task involves a specific platform or domain, discover and consult relevant domain skills:
+1. Check `~/.claude/skills/` and `.claude/skills/` for skills whose description matches the task's platform or domain (e.g., iOS, tvOS, web frontend, backend)
+2. Read the matching skill's `SKILL.md` to identify which reference files apply
+3. Record which domain skill references were consulted in the context doc under `### Domain References`
 
-Record which domain skill references were consulted in the context doc under `### Domain References`. Do NOT read all reference files — only those relevant to the task (e.g., a navigation change reads layout and navigation refs, not media or camera refs).
+Do NOT read all reference files from a domain skill — only those relevant to the task (e.g., a navigation change reads layout and navigation refs, not media or camera refs).
 
-Skip this step if the task has no platform-specific concerns.
+Skip this step if the task has no platform-specific or domain-specific concerns.
 
 ### Existing patterns
 - Use `Grep` and `Glob` to find similar code — use parallel Explore agents for independent areas (max 3 concurrent to limit memory pressure)
@@ -170,4 +170,4 @@ When the user rejects the `## Context`:
 4. Track iteration count in the doc: `**Context iteration**: 2/3`
 5. After 3 rejections, escalate: "We've iterated 3 times on context. Should we (a) continue refining, (b) pair on this live, or (c) abandon and rethink the approach?"
 
-When approved: **run `/clear`** to free context, then call `EnterPlanMode` and read `phase-2-plan.md`.
+When approved: call `EnterPlanMode` and read `phase-2-plan.md`.

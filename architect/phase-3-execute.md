@@ -122,9 +122,9 @@ After all steps pass and `## Implementation` is marked "Complete":
 After updating `## Implementation` to "Complete", use `AskUserQuestion`:
 > "Phase 3 complete. Please review `## Implementation` in `docs/plans/YYYY-MM/<slug>.md` and the code diffs. Did the implementation meet expectations? Any issues or surprises?"
 
-## Post-Mortem (always)
+## Post-Mortem (non-trivial tasks only)
 
-Append a `## Post-Mortem` section to `<slug>.md` after **every** completed task, not just when deviations exist.
+Append a `## Post-Mortem` section to `<slug>.md` after completed **non-trivial** tasks (full 3-phase workflow). Skip for fast-path trivial tasks unless deviations occurred.
 
 ```markdown
 ## Post-Mortem
